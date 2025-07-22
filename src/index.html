@@ -2,11 +2,69 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Document</title>
   </head>
   <body>
-    <script type="module" src="./js/index.js"></script>
+    <div class="back"></div>
+    <div class="header">
+      <img src="./assets/images/logo.svg" alt=" rock scissors paper" />
+      <div class="header__info">
+        <span class="header__lblScore">SCORE</span>
+        <span id="score" class="header__numScore">0</span>
+      </div>
+    </div>
+    <div class="center">
+      <div class="contenedor" id="buttons">
+        <button
+          type="button"
+          class="contenedor__paper"
+          data-button="paper"
+        ></button>
+        <button
+          type="button"
+          class="contenedor__scissor"
+          data-button="scissors"
+        ></button>
+        <button
+          type="button"
+          class="contenedor__rock"
+          data-button="rock"
+        ></button>
+      </div>
+      <div id="btnResult" class="divResult">
+        <div id="resultHuman" class="human"></div>
+        <div>
+          <label id="lblResult" class="lblresult">...</label>
+          <input
+            type="button"
+            class="inpAgain"
+            id="again"
+            value="PLAY AGAIN"
+            disabled
+          />
+        </div>
+        <div id="result" class="maquina"></div>
+      </div>
+    </div>
+
+    <div>
+      <button id="btnRules" class="button">RULES</button>
+    </div>
+    <div class="rules">
+      <span>RULES</span>
+      <button id="btnClose" class="close">X</button>
+      <img class="image" src="./assets/images/image-rules.svg" alt="rules" />
+    </div>
+    <script src="./js/index.js"></script>
   </body>
 </html>

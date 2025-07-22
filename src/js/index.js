@@ -11,35 +11,6 @@ const inpCloseElement = document.getElementById('btnClose');
 const numeroAleatorio = (max, min) =>
 	Math.floor(Math.random() * (max + 1 - min) + min);
 
-const botonesEfects = {
-	paper: {
-		setScale: '--scalePaper',
-		setMoveY: '--movePaperY',
-		setMoveX: '--movePaperX',
-		valMoveY: '20cqh',
-		valMoveX: '-9cqw',
-		setOpacity: '--paperOpacity',
-	},
-	rock: {
-		setScale: '--scaleRock',
-		setMoveY: '--moveRockY',
-		setMoveX: '--moveRockX',
-		valMoveY: '-20cqh',
-		valMoveX: '-112%',
-		setOpacity: '--rockOpacity',
-	},
-	scissors: {
-		setScale: '--scaleScissors',
-		setMoveY: '--moveScissorsY',
-		setMoveX: '--moveScissorsX',
-		valMoveY: '20cqh',
-		valMoveX: '-35cqw',
-		setOpacity: '--scissorsOpacity',
-	},
-	valScale: '1.4',
-	valOpacity: '0',
-};
-
 const result = {
 	paper: {
 		ganar: ['rock'],
@@ -59,35 +30,19 @@ const listOptions = [...inputPaperElement.children];
 
 inputPaperElement.addEventListener('click', event => {
 	if (event.target.tagName !== 'DIV') {
-		rootStyles.setProperty(
-			botonesEfects[event.target.dataset.button].setScale,
-			botonesEfects.valScale,
-		);
-		rootStyles.setProperty(
-			botonesEfects[event.target.dataset.button].setMoveY,
-			botonesEfects[event.target.dataset.button].valMoveY,
-		);
-		rootStyles.setProperty(
-			botonesEfects[event.target.dataset.button].setMoveX,
-			botonesEfects[event.target.dataset.button].valMoveX,
-		);
-		rootStyles.setProperty('--scaleButtonRobot', botonesEfects.valScale);
-		rootStyles.setProperty('--moveButtonRobotY', '20cqh');
-		rootStyles.setProperty('--moveButtonRobotX', '22cqw');
-
-		rootStyles.setProperty('--buttonRobotOpacity', '1');
+		rootStyles.setProperty('--divButtonsDisplay', 'none');
+		rootStyles.setProperty('--divResDisplay', 'flex');
 		rootStyles.setProperty('--showAgain', '1');
-		rootStyles.setProperty('--showMaquina', '0');
 
-		listOptions.forEach(element => {
-			element.disabled = true;
-			if (event.target.dataset.button !== element.dataset.button) {
-				rootStyles.setProperty(
-					botonesEfects[element.dataset.button].setOpacity,
-					botonesEfects.valOpacity,
-				);
-			}
-		});
+		// listOptions.forEach(element => {
+		// 	element.disabled = true;
+		// 	if (event.target.dataset.button !== element.dataset.button) {
+		// 		rootStyles.setProperty(
+		// 			botonesEfects[element.dataset.button].setOpacity,
+		// 			botonesEfects.valOpacity,
+		// 		);
+		// 	}
+		// });
 
 		const numeroMaquina = numeroAleatorio(2, 0);
 
@@ -113,49 +68,45 @@ inputPaperElement.addEventListener('click', event => {
 		}
 
 		inputAgainElement.disabled = false;
-
-		rootStyles.setProperty('--backDivRes', '10');
 	}
 });
 
-inputAgainElement.addEventListener('click', event => {
-	rootStyles.setProperty('--scaleButtonRobot', '1');
-	rootStyles.setProperty('--moveButtonRobotY', '0%');
-
-	rootStyles.setProperty('--buttonRobotOpacity', '0');
+inputAgainElement.addEventListener('click', () => {
 	rootStyles.setProperty('--showAgain', '0');
-	rootStyles.setProperty('--showMaquina', '1');
-	rootStyles.setProperty('--backDivRes', '0');
+
+	rootStyles.setProperty('--divButtonsDisplay', 'flex');
+	rootStyles.setProperty('--divResDisplay', 'none');
+
 	inputAgainElement.disabled = true;
 
 	listOptions.forEach(element => {
-		element.disabled = false;
+		// 	element.disabled = false;
 
-		rootStyles.setProperty(
-			botonesEfects[element.dataset.button].setOpacity,
-			'1',
-		);
-		rootStyles.setProperty(botonesEfects[element.dataset.button].setScale, '1');
-		rootStyles.setProperty(
-			botonesEfects[element.dataset.button].setMoveY,
-			'0%',
-		);
-		rootStyles.setProperty(
-			botonesEfects[element.dataset.button].setMoveX,
-			'0%',
-		);
+		// 	rootStyles.setProperty(
+		// 		botonesEfects[element.dataset.button].setOpacity,
+		// 		'1',
+		// 	);
+		// 	rootStyles.setProperty(botonesEfects[element.dataset.button].setScale, '1');
+		// 	rootStyles.setProperty(
+		// 		botonesEfects[element.dataset.button].setMoveY,
+		// 		'0%',
+		// 	);
+		// 	rootStyles.setProperty(
+		// 		botonesEfects[element.dataset.button].setMoveX,
+		// 		'0%',
+		// 	);
 
 		resMaquinaElement.classList.remove(`maquina--${element.dataset.button}`);
 	});
 });
 
-inpRulesElement.addEventListener('click', event => {
+inpRulesElement.addEventListener('click', () => {
 	rootStyles.setProperty('--rulesMoveY', '0');
 	rootStyles.setProperty('--back', '20');
 	rootStyles.setProperty('--backOpacity', '1');
 });
 
-inpCloseElement.addEventListener('click', event => {
+inpCloseElement.addEventListener('click', () => {
 	rootStyles.setProperty('--rulesMoveY', '-2000px');
 	rootStyles.setProperty('--back', '-20');
 	rootStyles.setProperty('--backOpacity', '0');

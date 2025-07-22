@@ -1,32 +1,33 @@
 :root {
-	--scalePaper: 1;
+	/* --scalePaper: 1;
 	--scaleRock: 1;
-	--scaleScissors: 1;
-
-	--movePaperY: 0px;
+	--scaleScissors: 1; */
+	--divResDisplay: none;
+	--divButtonsDisplay: flex;
+	/* --movePaperY: 0px;
 	--movePaperX: 0px;
 	--moveRockY: 0px;
 	--moveRockX: 0px;
 	--moveScissorsY: 0px;
-	--moveScissorsX: 0px;
+	--moveScissorsX: 0px; */
 
-	--paperOpacity: 1;
+	/* --paperOpacity: 1;
 	--rockOpacity: 1;
-	--scissorsOpacity: 1;
+	--scissorsOpacity: 1; */
 
 	--showAgain: 0;
 
-	--moveButtonRobotY: 0px;
+	/* --moveButtonRobotY: 0px;
 	--moveButtonRobotX: 0px;
 	--scaleButtonRobot: 1;
-	--buttonRobotOpacity: 0;
+	--buttonRobotOpacity: 0; */
 
 	--imageBackground: url('../assets/images/bg-triangle.svg');
 	--imagenMaquina: url('../assets/images/icon-scissors.svg');
 	--imageRock: url('../assets/images/icon-rock.svg');
 	--imageScissors: url('../assets/images/icon-scissors.svg');
 	--imagePaper: url('../assets/images/icon-paper.svg');
-	--backDivRes: 0;
+
 	--showMaquina: 1;
 	--rulesMoveY: -2000px;
 	--back: -20;
@@ -36,12 +37,12 @@
 
 body {
 	background: var(--background);
-	width: 100vw;
+
 	height: 100vh;
 
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+
 	align-items: center;
 	font-family: 'Barlow Semi Condensed', sans-serif;
 	letter-spacing: 2px;
@@ -57,6 +58,7 @@ body {
 	width: 80%;
 	max-width: 705px;
 	min-width: 318px;
+	margin-top: 30px;
 }
 
 .header__info {
@@ -94,27 +96,44 @@ body {
 	height: 40%;
 	max-height: 440px;
 	min-height: 200px;
+	margin-top: 160px;
 }
 
 .contenedor {
 	width: 100%;
 	height: 100%;
-	display: flex;
+	display: var(--divButtonsDisplay);
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	container-type: size;
+	/* container-type: size; */
 
 	background-image: var(--imageBackground);
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
+/* .divResult {
+	width: 100%;
+	display: none; 
+}*/
+
+.divResult {
+	width: 100%;
+	display: var(--divResDisplay);
+	justify-content: space-around;
+	align-items: center;
+}
+
+.playAgain {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .contenedor__paper,
 .contenedor__rock,
-.contenedor__scissor,
-.maquina,
-.human {
+.contenedor__scissor {
 	position: absolute;
 	width: 194px;
 	height: 194px;
@@ -122,26 +141,27 @@ body {
 	background-color: rgb(8, 35, 158);
 	cursor: pointer;
 	border-radius: 100px;
+	transition: transform 0.3s;
 }
 
 .maquina,
 .human {
-	position: static;
+	width: 194px;
+	height: 194px;
+	border: none;
+	background-color: rgb(8, 35, 158);
+	cursor: pointer;
+	border-radius: 100px;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	top: 0;
-
-	cursor: default;
-	z-index: -10;
 }
 
 @media only screen and (max-width: 480px) {
 	.contenedor__paper,
 	.contenedor__rock,
-	.contenedor__scissor,
-	.maquina,
-	.maquina::after {
+	.contenedor__scissor {
 		width: 100px;
 		height: 100px;
 	}
@@ -192,7 +212,7 @@ body {
 .contenedor__paper {
 	top: 0;
 	left: 20%;
-	/* border: solid 25px hsl(230, 89%, 62%); */
+
 	background:
 		no-repeat center / 35% 40% var(--imagePaper),
 		radial-gradient(circle at 50% 46%, transparent 68%, hsl(230, 54%, 50%) 69%),
@@ -204,12 +224,6 @@ body {
 			hsl(240, 1%, 80%) 62%,
 			transparent 63%
 		);
-	/* transition:
-		opacity 0.5s,
-		transform 0.5s 0.5s;
-	opacity: var(--paperOpacity);
-	transform: scale(var(--scalePaper))
-		translate(var(--movePaperX), var(--movePaperY)); */
 }
 
 .contenedor__scissor {
@@ -226,12 +240,6 @@ body {
 			hsl(240, 1%, 80%) 62%,
 			transparent 63%
 		);
-	/* transition:
-		opacity 0.5s,
-		transform 0.5s 0.5s;
-	opacity: var(--scissorsOpacity);
-	transform: scale(var(--scaleScissors))
-		translate(var(--moveScissorsX), var(--moveScissorsY)); */
 }
 
 .contenedor__rock {
@@ -249,17 +257,8 @@ body {
 			hsl(240, 1%, 80%) 62%,
 			transparent 63%
 		);
-	/* transition:
-		opacity 0.5s,
-		transform 0.5s 0.5s;
-	opacity: var(--rockOpacity);
-	transform: scale(var(--scaleRock))
-		translate(var(--moveRockX), var(--moveRockY)); */
 }
 
-.contenedor__paper::before,
-.contenedor__rock::before,
-.contenedor__scissor::before,
 .maquina::before,
 .human::before {
 	font-family: inherit;
@@ -277,6 +276,11 @@ body {
 .maquina::before {
 	text-align: center;
 	content: 'La maquina elijio';
+}
+
+.humano::before {
+	text-align: center;
+	content: 'Elejiste';
 }
 
 .button,
@@ -297,6 +301,15 @@ body {
 	color: #fff;
 	letter-spacing: 0.15rem;
 	cursor: pointer;
+	transition: transform 0.3s;
+}
+
+.button {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin-right: 20px;
+	margin-bottom: 20px;
 }
 
 .rules {
@@ -341,6 +354,12 @@ body {
 	.inpAgain:hover {
 		transform: scale(1.1);
 	}
+
+	.contenedor__paper:hover,
+	.contenedor__rock:hover,
+	.contenedor__scissor:hover {
+		transform: scale(1.1);
+	}
 }
 
 .close {
@@ -352,16 +371,6 @@ body {
 	background-color: transparent;
 }
 
-.inpAgain {
-}
-
-.divResult {
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
 .back {
 	position: absolute;
 	background-color: #00000080;
@@ -369,4 +378,17 @@ body {
 	height: 100vh;
 	z-index: var(--back);
 	opacity: var(--backOpacity);
+}
+
+@media screen and (max-width: 660px) {
+	.playAgain {
+		position: absolute;
+		top: 150px;
+	}
+
+	.maquina,
+	.human {
+		width: 100px;
+		height: 100px;
+	}
 }

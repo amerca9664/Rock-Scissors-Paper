@@ -91,12 +91,11 @@ body {
 	align-items: center;
 	position: relative;
 	width: 90%;
-	max-width: 905px;
+	max-width: 550px;
 
-	height: 40%;
-	max-height: 440px;
-	min-height: 200px;
-	margin-top: 160px;
+	height: 390px;
+
+	margin-top: 5vh;
 }
 
 .contenedor {
@@ -111,6 +110,7 @@ body {
 	background-image: var(--imageBackground);
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: 300px;
 }
 
 /* .divResult {
@@ -119,7 +119,8 @@ body {
 }*/
 
 .divResult {
-	width: 100%;
+	position: relative;
+	width: 120%;
 	display: var(--divResDisplay);
 	justify-content: space-around;
 	align-items: center;
@@ -156,15 +157,6 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-@media only screen and (max-width: 480px) {
-	.contenedor__paper,
-	.contenedor__rock,
-	.contenedor__scissor {
-		width: 100px;
-		height: 100px;
-	}
 }
 
 .maquina--paper {
@@ -211,7 +203,7 @@ body {
 
 .contenedor__paper {
 	top: 0;
-	left: 20%;
+	left: 0;
 
 	background:
 		no-repeat center / 35% 40% var(--imagePaper),
@@ -228,7 +220,7 @@ body {
 
 .contenedor__scissor {
 	top: 0;
-	right: 20%;
+	right: 0;
 	background:
 		no-repeat center / 35% 40% var(--imageScissors),
 		radial-gradient(circle at 50% 46%, transparent 68%, hsl(39, 87%, 39%) 69%),
@@ -244,7 +236,6 @@ body {
 
 .contenedor__rock {
 	bottom: 0;
-	transform-origin: bottom;
 
 	background:
 		no-repeat center / 35% 40% var(--imageRock),
@@ -380,7 +371,17 @@ body {
 	opacity: var(--backOpacity);
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 750px) {
+	.center {
+		height: 300px;
+	}
+	.contenedor__paper,
+	.contenedor__rock,
+	.contenedor__scissor {
+		width: 100px;
+		height: 100px;
+	}
+
 	.playAgain {
 		position: absolute;
 		top: 150px;

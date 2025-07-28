@@ -120,7 +120,7 @@ body {
 
 .divResult {
 	position: relative;
-	width: 120%;
+	width: 140%;
 	display: var(--divResDisplay);
 	justify-content: space-around;
 	align-items: center;
@@ -147,16 +147,14 @@ body {
 
 .maquina,
 .human {
-	width: 194px;
-	height: 194px;
+	width: 220px;
+	height: 220px;
 	border: none;
 	background-color: rgb(8, 35, 158);
 	cursor: pointer;
-	border-radius: 100px;
-
+	border-radius: 110px;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 }
 
 .maquina--paper {
@@ -259,9 +257,9 @@ body {
 	color: white;
 	content: 'Elejiste';
 	position: relative;
-	top: -80%;
+	top: -30%;
 	opacity: var(--showAgain);
-	transition: opacity 0.2s 1s;
+	transition: opacity 5s 1s;
 }
 
 .maquina::before {
@@ -372,24 +370,34 @@ body {
 }
 
 @media screen and (max-width: 750px) {
+	.contenedor {
+		background-size: 200px;
+	}
+
 	.center {
-		height: 300px;
+		width: 270px;
+		height: 250px;
 	}
 	.contenedor__paper,
 	.contenedor__rock,
 	.contenedor__scissor {
-		width: 100px;
-		height: 100px;
+		width: 120px;
+		height: 120px;
 	}
 
 	.playAgain {
 		position: absolute;
-		top: 150px;
+		top: 110px;
 	}
 
 	.maquina,
 	.human {
-		width: 100px;
-		height: 100px;
+		width: 120px;
+		height: 120px;
+	}
+
+	.maquina::before,
+	.human::before {
+		font-size: 1.2rem;
 	}
 }

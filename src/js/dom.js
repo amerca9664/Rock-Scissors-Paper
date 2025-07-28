@@ -1,6 +1,7 @@
 const inputPaperElement = document.getElementById('buttons');
 const rootStyles = document.documentElement.style;
 const resMaquinaElement = document.getElementById('result');
+const resultHumanElement = document.getElementById('resultHuman');
 const lblResElement = document.getElementById('lblResult');
 const inputAgainElement = document.getElementById('again');
 const divResultElement = document.getElementById('btnResult');
@@ -18,4 +19,5 @@ export {
 	lblScoreElement,
 	inpRulesElement,
 	inpCloseElement,
+	resultHumanElement,
 };

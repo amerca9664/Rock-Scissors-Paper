@@ -13,4 +13,16 @@ const stylesButtonsGame = ({ numeroMaquina, humanChoose }) => {
 	resultHumanElement.classList.add(`maquina--${humanChoose}`);
 };
 
-export { stylesButtonsGame };
+const stylesResetGame = () => {
+	rootStyles.setProperty('--showAgain', '0');
+
+	rootStyles.setProperty('--divButtonsDisplay', 'flex');
+	rootStyles.setProperty('--divResDisplay', 'none');
+
+	listOptions.forEach(element => {
+		resMaquinaElement.classList.remove(`maquina--${element.dataset.button}`);
+		resultHumanElement.classList.remove(`maquina--${element.dataset.button}`);
+	});
+};
+
+export { stylesButtonsGame, stylesResetGame };

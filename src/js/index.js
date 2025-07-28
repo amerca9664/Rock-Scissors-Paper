@@ -3,12 +3,10 @@ import {
 	inpRulesElement,
 	inputAgainElement,
 	inputPaperElement,
-	resMaquinaElement,
-	resultHumanElement,
 	rootStyles,
 } from './dom';
-
-import { listOptions, playGame } from './funcions';
+import { stylesResetGame } from './funcionStyles';
+import { playGame } from './funcions';
 
 inputPaperElement.addEventListener('click', event => {
 	if (event.target.tagName !== 'DIV') {
@@ -18,17 +16,8 @@ inputPaperElement.addEventListener('click', event => {
 });
 
 inputAgainElement.addEventListener('click', () => {
-	rootStyles.setProperty('--showAgain', '0');
-
-	rootStyles.setProperty('--divButtonsDisplay', 'flex');
-	rootStyles.setProperty('--divResDisplay', 'none');
-
 	inputAgainElement.disabled = true;
-
-	listOptions.forEach(element => {
-		resMaquinaElement.classList.remove(`maquina--${element.dataset.button}`);
-		resultHumanElement.classList.remove(`maquina--${element.dataset.button}`);
-	});
+	stylesResetGame();
 });
 
 inpRulesElement.addEventListener('click', () => {

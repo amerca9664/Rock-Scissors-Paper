@@ -14,6 +14,7 @@ let contadorWin = 0;
 const listOptions = [...inputPaperElement.children];
 
 const playGame = ({ selectButton }) => {
+	inputAgainElement.disabled = false;
 	const numeroMaquina = numeroAleatorio(2, 0);
 	stylesButtonsGame({
 		numeroMaquina: numeroMaquina,
@@ -29,15 +30,16 @@ const playGame = ({ selectButton }) => {
 
 	if (resultDraw) {
 		lblResElement.textContent = 'Empate';
-	} else if (resultWin) {
+		return;
+	}
+	if (resultWin) {
 		lblResElement.textContent = 'Gano';
 		contadorWin += 1;
 		lblScoreElement.textContent = contadorWin;
-	} else {
-		lblResElement.textContent = 'Perdiste';
+		return;
 	}
 
-	inputAgainElement.disabled = false;
+	lblResElement.textContent = 'Perdiste';
 };
 
 export { numeroAleatorio, playGame, listOptions };

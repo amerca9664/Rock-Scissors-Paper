@@ -54,17 +54,17 @@ body {
 	align-items: center;
 	border: solid 3px hsl(217, 16%, 45%);
 	border-radius: 15px;
-	padding: 25px 30px;
+	padding: 15px 25px;
 	width: 80%;
 	max-width: 705px;
 	min-width: 318px;
 	margin-top: 30px;
+	font-size: 3.5rem;
 }
 
 .header__info {
-	width: 130px;
-	height: 99px;
-	border-radius: 15px;
+	padding: 0.3em 0.6em;
+	border-radius: 0.2em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -81,7 +81,6 @@ body {
 .header__numScore {
 	color: hsl(229, 25%, 31%);
 	font-weight: 700;
-	font-size: 3.5rem;
 }
 
 .center {
@@ -153,8 +152,7 @@ body {
 	background-color: rgb(8, 35, 158);
 	cursor: pointer;
 	border-radius: 110px;
-	display: flex;
-	justify-content: center;
+	position: relative;
 }
 
 .maquina--paper {
@@ -250,6 +248,9 @@ body {
 
 .maquina::before,
 .human::before {
+	display: block;
+	width: 100%;
+
 	font-family: inherit;
 	font-weight: 600;
 	font-size: 1.5rem;
@@ -260,15 +261,14 @@ body {
 	top: -30%;
 	opacity: var(--showAgain);
 	transition: opacity 5s 1s;
+	text-align: center;
 }
 
 .maquina::before {
-	text-align: center;
 	content: 'La maquina elijio';
 }
 
 .humano::before {
-	text-align: center;
 	content: 'Elejiste';
 }
 
@@ -370,8 +370,24 @@ body {
 }
 
 @media screen and (max-width: 750px) {
+	.header {
+		font-size: 2rem;
+	}
+
+	.header__lblScore {
+		font-size: 0.8rem;
+	}
+
+	.header__svgTitle {
+		width: 100px;
+	}
+
 	.contenedor {
 		background-size: 200px;
+	}
+
+	.divResult {
+		top: -50px;
 	}
 
 	.center {
@@ -387,17 +403,18 @@ body {
 
 	.playAgain {
 		position: absolute;
-		top: 110px;
+		top: 220px;
 	}
 
 	.maquina,
 	.human {
-		width: 120px;
-		height: 120px;
+		width: 130px;
+		height: 130px;
 	}
 
 	.maquina::before,
 	.human::before {
+		top: 150px;
 		font-size: 1.2rem;
 	}
 }

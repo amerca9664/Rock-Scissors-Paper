@@ -16,11 +16,29 @@ const stylesButtonsGame = ({ numeroMaquina, humanChoose }) => {
 	resultHumanElement.classList.add(`maquina--${humanChoose}`);
 };
 
+const stylesSelWinner = (winner = null) => {
+	setTimeout(() => {
+		if (winner === null) {
+			rootStyles.setProperty('--humanWin', '1');
+			rootStyles.setProperty('--machineWin', '1');
+			return;
+		}
+
+		if (winner) {
+			rootStyles.setProperty('--humanWin', '1');
+		} else {
+			rootStyles.setProperty('--machineWin', '1');
+		}
+	}, 50);
+};
+
 const stylesResetGame = () => {
 	rootStyles.setProperty('--showAgain', '0');
 	rootStyles.setProperty('--showMaquina', '1');
 	rootStyles.setProperty('--divButtonsDisplay', 'flex');
 	rootStyles.setProperty('--divResDisplay', 'none');
+	rootStyles.setProperty('--humanWin', '0');
+	rootStyles.setProperty('--machineWin', '0');
 
 	listOptions.forEach(element => {
 		resMaquinaElement.classList.remove(`maquina--${element.dataset.button}`);
@@ -28,4 +46,4 @@ const stylesResetGame = () => {
 	});
 };
 
-export { stylesButtonsGame, stylesResetGame };
+export { stylesButtonsGame, stylesResetGame, stylesSelWinner };

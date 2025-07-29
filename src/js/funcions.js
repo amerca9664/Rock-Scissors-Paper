@@ -5,7 +5,7 @@ import {
 	lblResElement,
 	lblScoreElement,
 } from './dom';
-import { stylesButtonsGame } from './funcionStyles';
+import { stylesButtonsGame, stylesSelWinner } from './funcionStyles';
 
 const numeroAleatorio = (max, min) =>
 	Math.floor(Math.random() * (max + 1 - min) + min);
@@ -30,16 +30,21 @@ const playGame = ({ selectButton }) => {
 
 	if (resultDraw) {
 		lblResElement.textContent = 'Empate';
+		stylesSelWinner();
 		return;
 	}
 	if (resultWin) {
 		lblResElement.textContent = 'Gano';
+		stylesSelWinner(true);
 		contadorWin += 1;
-		lblScoreElement.textContent = contadorWin;
+		// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+		setTimeout(() => (lblScoreElement.textContent = contadorWin), 1000);
+
 		return;
 	}
 
 	lblResElement.textContent = 'Perdiste';
+	stylesSelWinner(false);
 };
 
 export { numeroAleatorio, playGame, listOptions };

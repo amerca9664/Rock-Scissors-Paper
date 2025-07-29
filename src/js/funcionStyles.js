@@ -4,18 +4,21 @@ import { listOptions } from './funcions';
 const stylesButtonsGame = ({ numeroMaquina, humanChoose }) => {
 	rootStyles.setProperty('--divButtonsDisplay', 'none');
 	rootStyles.setProperty('--divResDisplay', 'flex');
-	rootStyles.setProperty('--showAgain', '1');
 
-	resMaquinaElement.classList.add(
-		`maquina--${listOptions[numeroMaquina].dataset.button}`,
-	);
+	setTimeout(() => {
+		resMaquinaElement.classList.add(
+			`maquina--${listOptions[numeroMaquina].dataset.button}`,
+		);
+		rootStyles.setProperty('--showAgain', '1');
+		rootStyles.setProperty('--showMaquina', '0');
+	}, 50);
 
 	resultHumanElement.classList.add(`maquina--${humanChoose}`);
 };
 
 const stylesResetGame = () => {
 	rootStyles.setProperty('--showAgain', '0');
-
+	rootStyles.setProperty('--showMaquina', '1');
 	rootStyles.setProperty('--divButtonsDisplay', 'flex');
 	rootStyles.setProperty('--divResDisplay', 'none');
 

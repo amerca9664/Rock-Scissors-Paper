@@ -8,6 +8,7 @@ const divResultElement = document.getElementById('btnResult');
 const lblScoreElement = document.getElementById('score');
 const inpRulesElement = document.getElementById('btnRules');
 const inpCloseElement = document.getElementById('btnClose');
+const playAgainIdElement = document.getElementById('playAgainId');
 
 export {
 	inputPaperElement,
@@ -20,4 +21,5 @@ export {
 	inpRulesElement,
 	inpCloseElement,
 	resultHumanElement,
+	playAgainIdElement,
 };

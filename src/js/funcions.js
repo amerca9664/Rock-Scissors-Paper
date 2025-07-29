@@ -7,6 +7,16 @@ import {
 } from './dom';
 import { stylesButtonsGame, stylesSelWinner } from './funcionStyles';
 
+const LS = localStorage;
+
+const getLS = key => {};
+
+const setLS = object => {
+	const sendData = JSON.stringify(object.user);
+	console.log(Object.keys(object));
+	LS.setItem(Object.keys(object), sendData);
+};
+
 const numeroAleatorio = (max, min) =>
 	Math.floor(Math.random() * (max + 1 - min) + min);
 
@@ -39,6 +49,7 @@ const playGame = ({ selectButton }) => {
 		contadorWin += 1;
 		// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
 		setTimeout(() => (lblScoreElement.textContent = contadorWin), 1000);
+		setLS({ user: { human: contadorWin, machine: 0 } });
 
 		return;
 	}

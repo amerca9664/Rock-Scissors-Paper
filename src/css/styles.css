@@ -1,29 +1,5 @@
-:root {
-	--divResDisplay: none;
-	--divButtonsDisplay: flex;
-
-	--showAgain: 0;
-
-	--imageBackground: url('../assets/images/bg-triangle.svg');
-	--imagenMaquina: url('../assets/images/icon-scissors.svg');
-	--imageRock: url('../assets/images/icon-rock.svg');
-	--imageScissors: url('../assets/images/icon-scissors.svg');
-	--imagePaper: url('../assets/images/icon-paper.svg');
-
-	--showMaquina: 1;
-	--rulesMoveY: -2000px;
-	--back: -20;
-	--backOpacity: 0;
-	--background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
-
-	--humanWin: 0;
-	--machineWin: 0;
-}
-
 body {
 	background: var(--background);
-
-	height: 100vh;
 
 	display: flex;
 	flex-direction: column;
@@ -80,6 +56,10 @@ body {
 	height: 390px;
 
 	margin-top: 15vh;
+}
+
+.spanRules {
+	color: rgb(68, 68, 68);
 }
 
 .contenedor {
@@ -146,7 +126,7 @@ body {
 	width: 100%;
 	height: 100%;
 	content: '';
-	background-color: rgb(8, 35, 158);
+	background-color: rgb(5, 27, 70);
 
 	position: absolute;
 	top: 0;
@@ -167,10 +147,7 @@ body {
 	top: 0;
 	border-radius: 50%;
 	transform: scale(0);
-	box-shadow:
-		0px 0px 0px 50px rgba(181, 202, 247, 0.034),
-		0px 0px 0px 100px rgba(181, 202, 247, 0.034),
-		0px 0px 0px 160px rgba(181, 202, 247, 0.034);
+	box-shadow: var(--shadowWinner);
 	transition: transform 1s 1s;
 	z-index: -10;
 }
@@ -183,95 +160,39 @@ body {
 	transform: scale(var(--humanWin));
 }
 
-.maquina--paper {
+.maquina--paper,
+.contenedor__paper {
 	background:
-		no-repeat center / 35% 40% var(--imagePaper),
-		radial-gradient(circle at 50% 46%, transparent 68%, hsl(230, 54%, 50%) 69%),
-		radial-gradient(circle at 50% 48%, transparent 50%, hsl(230, 89%, 62%) 51%),
-		radial-gradient(
-			circle at 50% 57%,
-			white 53%,
-			hsl(240, 1%, 80%) 54%,
-			hsl(240, 1%, 80%) 62%,
-			transparent 63%
-		);
+		var(--positionAndImageButtons) var(--imagePaper),
+		var(--gradPaper);
 }
 
-.maquina--scissors {
+.maquina--scissors,
+.contenedor__scissor {
 	background:
-		no-repeat center / 35% 40% var(--imageScissors),
-		radial-gradient(circle at 50% 46%, transparent 68%, hsl(39, 87%, 39%) 69%),
-		radial-gradient(circle at 50% 48%, transparent 50%, hsl(40, 84%, 53%) 51%),
-		radial-gradient(
-			circle at 50% 57%,
-			white 53%,
-			hsl(240, 1%, 80%) 54%,
-			hsl(240, 1%, 80%) 62%,
-			transparent 63%
-		);
+		var(--positionAndImageButtons) var(--imageScissors),
+		var(--gradScissors);
 }
 
-.maquina--rock {
+.maquina--rock,
+.contenedor__rock {
 	background:
-		no-repeat center / 35% 40% var(--imageRock),
-		radial-gradient(circle at 50% 46%, transparent 68%, hsl(349, 66%, 43%) 69%),
-		radial-gradient(circle at 50% 48%, transparent 50%, hsl(349, 70%, 56%) 51%),
-		radial-gradient(
-			circle at 50% 57%,
-			white 53%,
-			hsl(240, 1%, 80%) 54%,
-			hsl(240, 1%, 80%) 62%,
-			transparent 63%
-		);
+		var(--positionAndImageButtons) var(--imageRock),
+		var(--gradRock);
 }
 
 .contenedor__paper {
 	top: 0;
 	left: 0;
-
-	background:
-		no-repeat center / 35% 40% var(--imagePaper),
-		radial-gradient(circle at 50% 46%, transparent 68%, hsl(230, 54%, 50%) 69%),
-		radial-gradient(circle at 50% 48%, transparent 50%, hsl(230, 89%, 62%) 51%),
-		radial-gradient(
-			circle at 50% 57%,
-			white 53%,
-			hsl(240, 1%, 80%) 54%,
-			hsl(240, 1%, 80%) 62%,
-			transparent 63%
-		);
 }
 
 .contenedor__scissor {
 	top: 0;
 	right: 0;
-	background:
-		no-repeat center / 35% 40% var(--imageScissors),
-		radial-gradient(circle at 50% 46%, transparent 68%, hsl(39, 87%, 39%) 69%),
-		radial-gradient(circle at 50% 48%, transparent 50%, hsl(40, 84%, 53%) 51%),
-		radial-gradient(
-			circle at 50% 57%,
-			white 53%,
-			hsl(240, 1%, 80%) 54%,
-			hsl(240, 1%, 80%) 62%,
-			transparent 63%
-		);
 }
 
 .contenedor__rock {
 	bottom: 0;
-
-	background:
-		no-repeat center / 35% 40% var(--imageRock),
-		radial-gradient(circle at 50% 46%, transparent 68%, hsl(349, 66%, 43%) 69%),
-		radial-gradient(circle at 50% 48%, transparent 50%, hsl(349, 70%, 56%) 51%),
-		radial-gradient(
-			circle at 50% 57%,
-			white 53%,
-			hsl(240, 1%, 80%) 54%,
-			hsl(240, 1%, 80%) 62%,
-			transparent 63%
-		);
 }
 
 .spanChooseMaq,
@@ -390,9 +311,24 @@ body {
 }
 
 @media screen and (max-width: 750px) {
+	.center {
+		margin-top: 10vh;
+	}
 	.rules {
 		width: 100vw;
 		height: 100vh;
+
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		border-radius: 0px;
+	}
+	.spanRules {
+		text-align: center;
+	}
+	.close {
+		grid-row: 3;
+
+		justify-self: center;
 	}
 
 	.header {

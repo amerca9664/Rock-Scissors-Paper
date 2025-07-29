@@ -104,7 +104,7 @@ body {
 
 .divResult {
 	position: relative;
-	width: 140%;
+	width: 135%;
 	display: var(--divResDisplay);
 	justify-content: space-around;
 	align-items: center;
@@ -390,6 +390,11 @@ body {
 }
 
 @media screen and (max-width: 750px) {
+	.rules {
+		width: 100vw;
+		height: 100vh;
+	}
+
 	.header {
 		font-size: 2rem;
 	}

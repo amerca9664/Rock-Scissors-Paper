@@ -4,6 +4,7 @@ import {
 	inputPaperElement,
 	lblResElement,
 	lblScoreElement,
+	lblScoreHouseElement,
 } from './dom';
 import { stylesButtonsGame, stylesSelWinner } from './funcionStyles';
 
@@ -27,11 +28,12 @@ const setLS = object => {
 	LS.setItem(Object.keys(object), sendData);
 };
 
-let contadorWin = 0;
+let contadorHumanWin = 0;
+let contadorHouseWin = 0;
 
 const setStarWinCounter = value => {
-	contadorWin = value;
-	lblScoreElement.textContent = contadorWin;
+	contadorHumanWin = value;
+	lblScoreElement.textContent = contadorHumanWin;
 };
 
 const numeroAleatorio = (max, min) =>
@@ -62,14 +64,18 @@ const playGame = ({ selectButton }) => {
 	if (resultWin) {
 		lblResElement.textContent = 'Gano';
 		stylesSelWinner(true);
-		contadorWin += 1;
+		contadorHumanWin += 1;
 		// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-		setTimeout(() => (lblScoreElement.textContent = contadorWin), 1000);
-		setLS({ user: { human: contadorWin, machine: 0 } });
+		setTimeout(() => (lblScoreElement.textContent = contadorHumanWin), 1000);
+		setLS({ user: { human: contadorHumanWin } });
 
 		return;
 	}
 
+	contadorHouseWin += 1;
+	// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+	setTimeout(() => (lblScoreHouseElement.textContent = contadorHouseWin), 1000);
+	setLS({ user: { machine: contadorHumanWin } });
 	lblResElement.textContent = 'Perdiste';
 	stylesSelWinner(false);
 };

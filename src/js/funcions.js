@@ -9,18 +9,34 @@ import { stylesButtonsGame, stylesSelWinner } from './funcionStyles';
 
 const LS = localStorage;
 
-const getLS = key => {};
+const getLS = key => {
+	const data = LS.getItem(key);
+
+	if (!data) {
+		return console.log(`No found data with ${key}`);
+	}
+
+	const formatData = JSON.parse(data);
+
+	return formatData;
+};
 
 const setLS = object => {
 	const sendData = JSON.stringify(object.user);
-	console.log(Object.keys(object));
+
 	LS.setItem(Object.keys(object), sendData);
+};
+
+let contadorWin = 0;
+
+const setStarWinCounter = value => {
+	contadorWin = value;
+	lblScoreElement.textContent = contadorWin;
 };
 
 const numeroAleatorio = (max, min) =>
 	Math.floor(Math.random() * (max + 1 - min) + min);
 
-let contadorWin = 0;
 const listOptions = [...inputPaperElement.children];
 
 const playGame = ({ selectButton }) => {
@@ -58,4 +74,11 @@ const playGame = ({ selectButton }) => {
 	stylesSelWinner(false);
 };
 
-export { numeroAleatorio, playGame, listOptions };
+export {
+	numeroAleatorio,
+	playGame,
+	getLS,
+	setLS,
+	listOptions,
+	setStarWinCounter,
+};

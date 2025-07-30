@@ -6,7 +6,13 @@ import {
 	rootStyles,
 } from './dom';
 import { stylesResetGame } from './funcionStyles';
-import { playGame } from './funcions';
+import { getLS, playGame, setStarWinCounter } from './funcions';
+
+window.addEventListener('load', () => {
+	const actCountWin = getLS('user')?.human || 0;
+
+	setStarWinCounter(actCountWin);
+});
 
 inputPaperElement.addEventListener('click', event => {
 	if (event.target.tagName !== 'DIV') {

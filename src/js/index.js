@@ -3,10 +3,11 @@ import {
 	inpRulesElement,
 	inputAgainElement,
 	inputPaperElement,
+	resetButtonElement,
 	rootStyles,
 } from './dom';
 import { stylesResetGame } from './funcionStyles';
-import { getLS, playGame, setStartWinCounter } from './funcions';
+import { getLS, playGame, resetLS, setStartWinCounter } from './funcions';
 
 window.addEventListener('load', () => {
 	const actCountHumanWin = getLS('user')?.human || 0;
@@ -37,4 +38,12 @@ inpCloseElement.addEventListener('click', () => {
 	rootStyles.setProperty('--rulesMoveY', '-2000px');
 	rootStyles.setProperty('--back', '-20');
 	rootStyles.setProperty('--backOpacity', '0');
+});
+
+resetButtonElement.addEventListener('click', () => {
+	const actCountHumanWin = 0;
+	const actCountMachineWin = 0;
+
+	setStartWinCounter({ actCountHumanWin, actCountMachineWin });
+	resetLS();
 });

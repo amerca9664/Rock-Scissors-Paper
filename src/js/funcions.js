@@ -39,6 +39,15 @@ const setLS = object => {
 	LS.setItem(keyUser, sendData);
 };
 
+const resetLS = () => {
+	const data = { human: 0, machine: 0 };
+	const user = 'user';
+
+	const sendData = JSON.stringify(data);
+
+	LS.setItem(user, sendData);
+};
+
 const setStartWinCounter = ({ actCountMachineWin, actCountHumanWin }) => {
 	contadorHumanWin = actCountHumanWin;
 	contadorHouseWin = actCountMachineWin;
@@ -96,4 +105,5 @@ export {
 	setLS,
 	listOptions,
 	setStartWinCounter,
+	resetLS,
 };

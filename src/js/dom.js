@@ -10,6 +10,7 @@ const inpRulesElement = document.getElementById('btnRules');
 const inpCloseElement = document.getElementById('btnClose');
 const playAgainIdElement = document.getElementById('playAgainId');
 const lblScoreHouseElement = document.getElementById('houseScore');
+const resetButtonElement = document.getElementById('btnReset');
 
 export {
 	inputPaperElement,
@@ -24,4 +25,5 @@ export {
 	resultHumanElement,
 	playAgainIdElement,
 	lblScoreHouseElement,
+	resetButtonElement,
 };

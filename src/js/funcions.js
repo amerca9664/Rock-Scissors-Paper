@@ -9,12 +9,16 @@ import {
 import { stylesButtonsGame, stylesSelWinner } from './funcionStyles';
 
 const LS = localStorage;
+let contadorHumanWin = 0;
+let contadorHouseWin = 0;
+const listOptions = [...inputPaperElement.children];
 
 const getLS = key => {
 	const data = LS.getItem(key);
 
 	if (!data) {
-		return console.log(`No found data with ${key}`);
+		console.log(`No found data with ${key}`);
+		return;
 	}
 
 	const formatData = JSON.parse(data);
@@ -23,29 +27,34 @@ const getLS = key => {
 };
 
 const setLS = object => {
-	const sendData = JSON.stringify(object.user);
+	const keyUser = Object.keys(object)[0];
+	const keyWinner = Object.keys(object[keyUser])[0];
+	const valueWiner = Object.values(object[keyUser])[0];
 
-	LS.setItem(Object.keys(object), sendData);
+	const data = getLS(keyUser) || { human: 0, machine: 0 };
+	data[keyWinner] = valueWiner;
+
+	const sendData = JSON.stringify(data);
+	console.log(sendData);
+	LS.setItem(keyUser, sendData);
 };
 
-let contadorHumanWin = 0;
-let contadorHouseWin = 0;
+const setStartWinCounter = ({ actCountMachineWin, actCountHumanWin }) => {
+	contadorHumanWin = actCountHumanWin;
+	contadorHouseWin = actCountMachineWin;
 
-const setStarWinCounter = value => {
-	contadorHumanWin = value;
 	lblScoreElement.textContent = contadorHumanWin;
+	lblScoreHouseElement.textContent = contadorHouseWin;
 };
 
 const numeroAleatorio = (max, min) =>
 	Math.floor(Math.random() * (max + 1 - min) + min);
 
-const listOptions = [...inputPaperElement.children];
-
 const playGame = ({ selectButton }) => {
 	inputAgainElement.disabled = false;
 	const numeroMaquina = numeroAleatorio(2, 0);
 	stylesButtonsGame({
-		numeroMaquina: numeroMaquina,
+		numeroMaquina,
 		humanChoose: selectButton,
 	});
 
@@ -75,7 +84,7 @@ const playGame = ({ selectButton }) => {
 	contadorHouseWin += 1;
 	// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
 	setTimeout(() => (lblScoreHouseElement.textContent = contadorHouseWin), 1000);
-	setLS({ user: { machine: contadorHumanWin } });
+	setLS({ user: { machine: contadorHouseWin } });
 	lblResElement.textContent = 'Perdiste';
 	stylesSelWinner(false);
 };
@@ -86,5 +95,5 @@ export {
 	getLS,
 	setLS,
 	listOptions,
-	setStarWinCounter,
+	setStartWinCounter,
 };

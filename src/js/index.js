@@ -6,18 +6,19 @@ import {
 	rootStyles,
 } from './dom';
 import { stylesResetGame } from './funcionStyles';
-import { getLS, playGame, setStarWinCounter } from './funcions';
+import { getLS, playGame, setStartWinCounter } from './funcions';
 
 window.addEventListener('load', () => {
-	const actCountWin = getLS('user')?.human || 0;
+	const actCountHumanWin = getLS('user')?.human || 0;
+	const actCountMachineWin = getLS('user')?.machine || 0;
 
-	setStarWinCounter(actCountWin);
+	setStartWinCounter({ actCountHumanWin, actCountMachineWin });
 });
 
 inputPaperElement.addEventListener('click', event => {
 	if (event.target.tagName !== 'DIV') {
-		const buttonPressed = event.target.dataset.button;
-		playGame({ selectButton: buttonPressed });
+		const selectButton = event.target.dataset.button;
+		playGame({ selectButton });
 	}
 });
 

@@ -31,6 +31,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	background-color: white;
+	text-align: center;
 }
 
 .header__lblScore {
@@ -214,7 +215,8 @@ body {
 }
 
 .button,
-.inpAgain {
+.inpAgain,
+.buttonReset {
 	position: relative;
 	font-family: inherit;
 	display: flex;
@@ -232,6 +234,14 @@ body {
 	letter-spacing: 0.15rem;
 	cursor: pointer;
 	transition: transform 0.3s;
+}
+
+.buttonReset {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	margin-left: 20px;
+	margin-bottom: 20px;
 }
 
 .button {
@@ -277,10 +287,8 @@ body {
 }
 
 @media (hover: hover) {
-	.button:hover {
-		transform: scale(1.1);
-	}
-
+	.button:hover,
+	.buttonReset:hover,
 	.inpAgain:hover {
 		transform: scale(1.1);
 	}
@@ -311,6 +319,9 @@ body {
 }
 
 @media screen and (max-width: 750px) {
+	.header__info {
+		width: 70px;
+	}
 	.center {
 		margin-top: 10vh;
 	}

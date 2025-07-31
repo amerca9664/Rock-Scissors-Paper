@@ -35,7 +35,7 @@ const setLS = object => {
 	data[keyWinner] = valueWiner;
 
 	const sendData = JSON.stringify(data);
-	console.log(sendData);
+
 	LS.setItem(keyUser, sendData);
 };
 

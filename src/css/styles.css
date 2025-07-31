@@ -1,4 +1,5 @@
 body {
+	height: 100vh;
 	background: var(--background);
 
 	display: flex;
@@ -319,6 +320,10 @@ body {
 }
 
 @media screen and (max-width: 750px) {
+	body {
+		height: auto;
+	}
+
 	.header__info {
 		width: 70px;
 	}
